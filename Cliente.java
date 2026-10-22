@@ -1,9 +1,12 @@
-
+import java.util.ArrayList;
+import java.util.List;
 
 public class Cliente {
     private String nome;
     private String email;
     private int idade;
+    private Plano plano;
+    private List<Treino> treinos = new ArrayList<>();
 
     public Cliente(String nome, String email, int idade) {
         if (nome == null || nome.isBlank()) {
@@ -23,6 +26,28 @@ public class Cliente {
     public String getNome() { return nome; }
     public String getEmail() { return email; }
     public int getIdade() { return idade; }
+
+    public Plano getPlano() {
+        return plano;
+    }
+
+    public void setPlano(Plano plano) {
+        if (plano == null) {
+            throw new IllegalArgumentException("Plano inválido!");
+        }
+        this.plano = plano;
+    }
+
+    public void adicionarTreino(Treino treino) {
+        if (treino == null) {
+            throw new IllegalArgumentException("Treino inválido!");
+        }
+        treinos.add(treino);
+    }
+
+    public List<Treino> getTreinos() {
+        return treinos;
+    }
 
     @Override
     public String toString() {
